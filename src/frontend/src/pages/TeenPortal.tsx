@@ -10,16 +10,17 @@ import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
   Brain,
-  ChevronDown,
   Code2,
-  Database,
+  Download,
   Palette,
   PencilLine,
   Search,
   Share2,
   Sparkles,
   Star,
+  Tv,
   UserCircle2,
+  Video,
   Wallet,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -50,17 +51,24 @@ function useFadeIn() {
 
 const services = [
   {
-    icon: Brain,
-    title: "AI Prompting & LLM Testing",
+    icon: Share2,
+    title: "Social Media Management",
     description:
-      "Shape the future of AI by crafting prompts, testing models, and evaluating outputs for cutting-edge companies.",
-    wide: true,
+      "Manage accounts, craft viral campaigns, and grow audiences for brands targeting Gen-Z. Turn your scrolling habit into income.",
+    wide: false,
   },
   {
-    icon: Code2,
-    title: "Web Development",
+    icon: Video,
+    title: "Video Creation & Editing",
     description:
-      "Build websites, apps, and digital tools using modern frameworks and real production codebases.",
+      "Create and edit short-form content, reels, YouTube videos, and branded video assets for companies.",
+    wide: false,
+  },
+  {
+    icon: Palette,
+    title: "Graphic Design",
+    description:
+      "Design logos, branding assets, social graphics, and visual content that turns heads and wins clients.",
     wide: false,
   },
   {
@@ -71,25 +79,18 @@ const services = [
     wide: false,
   },
   {
-    icon: Share2,
-    title: "Social Media",
+    icon: Code2,
+    title: "Web Development",
     description:
-      "Manage accounts, craft viral campaigns, and grow audiences for companies targeting Gen-Z.",
+      "Build websites, apps, and digital tools using modern frameworks and real production codebases.",
     wide: false,
   },
   {
-    icon: Database,
-    title: "Data Entry & Research",
+    icon: Brain,
+    title: "AI Prompting & Research",
     description:
-      "Power business decisions with accurate data collection, market research, and competitor analysis.",
+      "Shape the future of AI by crafting prompts, testing models, and evaluating outputs for cutting-edge companies.",
     wide: false,
-  },
-  {
-    icon: Palette,
-    title: "Graphic Design",
-    description:
-      "Design logos, branding assets, social graphics, and visual content that turns heads.",
-    wide: true,
   },
 ];
 
@@ -106,7 +107,7 @@ const steps = [
     icon: Search,
     title: "Browse Projects",
     description:
-      "Explore real projects from verified companies. Filter by skill, duration, and pay — and apply with one click.",
+      "Explore real freelance jobs for students from verified companies. Filter by skill, duration, and pay — and apply with one click.",
   },
   {
     number: "03",
@@ -120,7 +121,7 @@ const steps = [
 const faqs = [
   {
     q: "What is Funngro?",
-    a: "Funngro is a platform that connects talented young people (ages 14–22) — called Teenlancers — with real companies that need help with projects like AI prompting, web development, content writing, and more. It's the fastest way to turn your skills into real income and portfolio work.",
+    a: "Funngro is a platform that connects talented student freelancers (ages 14–22) — called Teenlancers — with real companies that need help with projects like social media management, video creation, graphic design, web development, and more. It's the fastest way for teens to get freelance jobs and turn skills into real income.",
   },
   {
     q: "What age do I need to be to join?",
@@ -131,11 +132,11 @@ const faqs = [
     a: "Payments are handled securely through our platform. Once a company approves your work, funds are released to your account. We support multiple payout methods including bank transfer and digital wallets.",
   },
   {
-    q: "What kind of projects are available?",
-    a: "You can find projects across 10+ categories including AI prompting & LLM testing, web development, content writing, social media management, data entry & research, and graphic design. New categories are added regularly based on industry demand.",
+    q: "What kind of freelance jobs are available for students?",
+    a: "You can find freelance jobs across 10+ categories including social media management, video creation & editing, graphic design, content writing, web development, and AI prompting & research. New project categories are added regularly based on industry demand.",
   },
   {
-    q: "Do I need experience to join?",
+    q: "Do I need experience to get freelance jobs?",
     a: "No prior professional experience is required! Many Teenlancers start with just a passion and basic skills. Funngro is designed for beginners and intermediates alike — it's where you build your experience, not where you need to have it already.",
   },
   {
@@ -147,11 +148,16 @@ const faqs = [
 export default function TeenPortal() {
   const [modalOpen, setModalOpen] = useState(false);
 
+  const sharkTankSection = useFadeIn();
   const statsSection = useFadeIn();
   const bentoSection = useFadeIn();
   const howItWorks = useFadeIn();
   const faqSection = useFadeIn();
   const ctaSection = useFadeIn();
+
+  useEffect(() => {
+    document.title = "Earn & Learn | Freelance Jobs for Students | Funngro";
+  }, []);
 
   const scrollToServices = () => {
     document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
@@ -160,60 +166,54 @@ export default function TeenPortal() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage:
-              "url('/assets/generated/hero-bg.dim_1600x900.jpg')",
-          }}
-          aria-hidden="true"
-        />
-        {/* Overlay */}
-        <div className="absolute inset-0 hero-overlay" aria-hidden="true" />
-        {/* Neon gradient accent */}
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] opacity-20 blur-[80px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse, oklch(0.87 0.28 135) 0%, transparent 70%)",
-          }}
-          aria-hidden="true"
-        />
-
-        <div className="container relative mx-auto px-4 sm:px-6 py-20">
+      <section className="relative pt-16 overflow-hidden hero-gradient">
+        <div className="container relative mx-auto px-4 sm:px-6 py-20 md:py-28">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 mb-8 animate-float">
-              <Star className="w-3.5 h-3.5 text-primary" fill="currentColor" />
-              <span className="text-sm font-medium text-primary">
-                2,000+ Teenlancers Earning
+            {/* Shark Tank Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-foreground/5 border border-foreground/10 mb-6 animate-float">
+              <span className="text-lg leading-none">🦈</span>
+              <span className="text-sm font-semibold text-foreground">
+                As Seen on Shark Tank India
               </span>
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse-neon" />
             </div>
 
-            {/* Headline */}
-            <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl text-foreground tracking-tight leading-none mb-6">
-              Your First Step into{" "}
-              <span className="text-primary [text-shadow:0_0_40px_oklch(0.87_0.28_135_/_0.5)]">
-                the Professional World.
-              </span>
+            {/* H1 — one per page */}
+            <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground tracking-tight leading-[1.05] mb-6">
+              Earn &amp; Learn —{" "}
+              <span className="text-primary">Freelance Jobs for Students</span>
             </h1>
 
             {/* Sub-headline */}
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              Funngro connects ambitious teens (14–22) with real companies.
-              Build your portfolio, earn real money, and launch your career —
-              starting today.
+              Funngro connects ambitious teens (ages 14–22) with real companies.
+              Build your portfolio, gain real experience, and start earning —
+              all for free.
             </p>
+
+            {/* Stats strip */}
+            <div className="flex flex-wrap items-center justify-center gap-6 mb-10">
+              {[
+                { value: "45L+", label: "Users" },
+                { value: "500+", label: "Companies" },
+                { value: "10+", label: "Categories" },
+              ].map((stat) => (
+                <div key={stat.label} className="flex items-center gap-2">
+                  <span className="font-display font-bold text-2xl text-primary">
+                    {stat.value}
+                  </span>
+                  <span className="text-sm text-muted-foreground">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 onClick={() => setModalOpen(true)}
                 size="lg"
-                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-8 py-3 h-12 transition-all duration-200 hover:shadow-neon"
+                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-8 h-12 transition-all duration-200 shadow-orange-sm hover:shadow-orange"
               >
                 Join as Teen
                 <ArrowRight className="ml-2 w-4 h-4" />
@@ -222,25 +222,86 @@ export default function TeenPortal() {
                 onClick={scrollToServices}
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto border-border text-foreground hover:border-primary hover:text-primary bg-transparent font-semibold text-base px-8 py-3 h-12 transition-all duration-200"
+                className="w-full sm:w-auto border-border text-foreground hover:border-primary hover:text-primary bg-white font-semibold text-base px-8 h-12 transition-all duration-200"
               >
-                See How It Works
-                <ChevronDown className="ml-2 w-4 h-4" />
+                <Download className="mr-2 w-4 h-4" />
+                Download App
               </Button>
             </div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
-          <ChevronDown className="w-5 h-5 text-muted-foreground animate-bounce" />
+        {/* Decorative bottom edge */}
+        <div
+          className="h-8 bg-white"
+          style={{ clipPath: "ellipse(60% 100% at 50% 100%)" }}
+          aria-hidden="true"
+        />
+      </section>
+
+      {/* Featured on Shark Tank India */}
+      <section
+        ref={sharkTankSection.ref as React.RefObject<HTMLElement>}
+        id="shark-tank"
+        className={`py-16 transition-all duration-700 ${
+          sharkTankSection.isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
+        }`}
+      >
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="shark-tank-band rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+              {/* Icon side */}
+              <div className="flex-shrink-0 flex flex-col items-center gap-3">
+                <div className="w-20 h-20 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+                  <Tv className="w-10 h-10 text-white" />
+                </div>
+                <div className="flex items-center gap-1">
+                  {["s1", "s2", "s3", "s4", "s5"].map((id) => (
+                    <Star
+                      key={id}
+                      className="w-4 h-4 text-yellow-400"
+                      fill="currentColor"
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Content side */}
+              <div className="text-center md:text-left">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 mb-3">
+                  <span className="text-xs font-bold text-primary uppercase tracking-wider">
+                    National Recognition
+                  </span>
+                </div>
+                <h2 className="font-display font-bold text-2xl md:text-3xl text-white mb-3">
+                  Featured on Shark Tank India
+                </h2>
+                <p className="text-white/70 text-sm md:text-base leading-relaxed max-w-xl">
+                  Funngro was featured on Shark Tank India, validating our
+                  mission to empower India's next generation of student
+                  freelancers. Our vision of connecting 45L+ young talents with
+                  real companies has earned recognition at the highest level.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-3 justify-center md:justify-start">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-semibold text-white">
+                    🦈 Shark Tank India
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-semibold text-white">
+                    🏆 Startup of the Year
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Stats Bar */}
       <section
         ref={statsSection.ref as React.RefObject<HTMLElement>}
-        className={`border-y border-border bg-card transition-all duration-700 ${
+        className={`border-y border-border section-alt transition-all duration-700 ${
           statsSection.isVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-8"
@@ -249,9 +310,9 @@ export default function TeenPortal() {
         <div className="container mx-auto px-4 sm:px-6 py-10">
           <div className="grid grid-cols-3 gap-4 md:gap-8">
             {[
-              { value: "2,000+", label: "Teenlancers" },
-              { value: "500+", label: "Companies" },
-              { value: "10+", label: "Project Categories" },
+              { value: "45L+", label: "Teenlancers on Platform" },
+              { value: "500+", label: "Partner Companies" },
+              { value: "10+", label: "Skill Categories" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="font-display font-bold text-3xl sm:text-4xl text-primary mb-1">
@@ -266,7 +327,7 @@ export default function TeenPortal() {
         </div>
       </section>
 
-      {/* Bento Grid — Services */}
+      {/* Skills / Services Section */}
       <section
         id="services"
         ref={bentoSection.ref as React.RefObject<HTMLElement>}
@@ -280,37 +341,33 @@ export default function TeenPortal() {
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 mb-4">
               <Sparkles className="w-3.5 h-3.5 text-primary" />
-              <span className="text-xs font-medium text-primary uppercase tracking-wider">
-                What You Can Do
+              <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+                10+ Categories Available
               </span>
             </div>
             <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight mb-4">
-              Skills Companies
-              <br />
-              <span className="text-primary">Actually Need</span>
+              Skills You Can Monetize
             </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
-              From AI to design, your skills are in demand. Pick a category and
-              start earning on projects that matter.
+            <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+              From social media to coding, your skills are in demand. Pick a
+              category and start finding freelance jobs for students today.
             </p>
           </div>
 
-          {/* Bento Grid */}
-          <div className="grid-bento">
+          {/* Service Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {services.map((service, idx) => {
               const Icon = service.icon;
               return (
                 <div
                   key={service.title}
-                  className={`glass-card rounded-lg p-6 group hover:border-primary/50 hover:shadow-neon transition-all duration-300 cursor-default ${
-                    service.wide ? "bento-wide" : ""
-                  }`}
+                  className="light-card rounded-xl p-6 group hover:border-primary/40 hover:shadow-card-hover transition-all duration-300 cursor-default"
                   style={{ animationDelay: `${idx * 80}ms` }}
                 >
-                  <div className="w-10 h-10 rounded-md bg-primary/15 flex items-center justify-center mb-4 group-hover:bg-primary/25 transition-colors">
+                  <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="font-display font-semibold text-lg text-foreground mb-2">
+                  <h3 className="font-display font-bold text-base text-foreground mb-2">
                     {service.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
@@ -327,7 +384,7 @@ export default function TeenPortal() {
       <section
         id="how-it-works"
         ref={howItWorks.ref as React.RefObject<HTMLElement>}
-        className={`py-24 bg-card/30 transition-all duration-700 delay-100 ${
+        className={`py-24 section-alt transition-all duration-700 delay-100 ${
           howItWorks.isVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-8"
@@ -336,15 +393,17 @@ export default function TeenPortal() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 mb-4">
-              <span className="text-xs font-medium text-primary uppercase tracking-wider">
+              <span className="text-xs font-semibold text-primary uppercase tracking-wider">
                 3 Simple Steps
               </span>
             </div>
             <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight mb-4">
-              How Funngro Works
-              <br />
-              <span className="text-primary">for Teens</span>
+              How It Works for Teens
             </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+              Getting your first freelance job as a student has never been
+              easier.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -358,12 +417,12 @@ export default function TeenPortal() {
                 >
                   {/* Number circle */}
                   <div className="relative">
-                    <div className="w-16 h-16 rounded-full border-2 border-primary bg-primary/10 flex items-center justify-center shadow-neon-sm">
+                    <div className="w-16 h-16 rounded-full border-2 border-primary bg-primary/10 flex items-center justify-center">
                       <span className="font-display font-bold text-2xl text-primary">
                         {idx + 1}
                       </span>
                     </div>
-                    <div className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-background border border-border flex items-center justify-center">
+                    <div className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-white border border-border shadow-xs flex items-center justify-center">
                       <Icon className="w-3.5 h-3.5 text-primary" />
                     </div>
                   </div>
@@ -376,14 +435,6 @@ export default function TeenPortal() {
                       {step.description}
                     </p>
                   </div>
-
-                  {/* Arrow connector (desktop only) */}
-                  {idx < steps.length - 1 && (
-                    <div
-                      className="hidden md:block absolute"
-                      aria-hidden="true"
-                    />
-                  )}
                 </div>
               );
             })}
@@ -405,16 +456,16 @@ export default function TeenPortal() {
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-14">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 mb-4">
-                <span className="text-xs font-medium text-primary uppercase tracking-wider">
+                <span className="text-xs font-semibold text-primary uppercase tracking-wider">
                   FAQs
                 </span>
               </div>
               <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight mb-4">
-                Questions? <span className="text-primary">Answered.</span>
+                Frequently Asked Questions
               </h2>
-              <p className="text-muted-foreground">
-                Everything you need to know about joining Funngro as a
-                Teenlancer.
+              <p className="text-muted-foreground text-lg">
+                Everything student freelancers need to know about joining
+                Funngro and finding freelance jobs for teens.
               </p>
             </div>
 
@@ -427,7 +478,7 @@ export default function TeenPortal() {
                 <AccordionItem
                   key={faq.q}
                   value={`faq-${idx}`}
-                  className="glass-card rounded-lg px-5 border-0 data-[state=open]:border-primary/30 data-[state=open]:shadow-neon-sm transition-all duration-200"
+                  className="light-card rounded-xl px-5 border data-[state=open]:border-primary/30 transition-all duration-200"
                 >
                   <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary hover:no-underline py-5 text-base">
                     {faq.q}
@@ -445,40 +496,46 @@ export default function TeenPortal() {
       {/* Bottom CTA */}
       <section
         ref={ctaSection.ref as React.RefObject<HTMLElement>}
-        className={`py-24 transition-all duration-700 delay-100 ${
+        className={`py-24 section-alt transition-all duration-700 delay-100 ${
           ctaSection.isVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-8"
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="relative max-w-4xl mx-auto text-center glass-card rounded-2xl p-12 md:p-16 overflow-hidden">
-            {/* Background accent */}
+          <div className="relative max-w-4xl mx-auto text-center rounded-2xl p-12 md:p-16 overflow-hidden bg-white border border-border shadow-card">
+            {/* Orange accent top line */}
             <div
-              className="absolute inset-0 opacity-5 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse at center, oklch(0.87 0.28 135) 0%, transparent 70%)",
-              }}
+              className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl bg-primary"
               aria-hidden="true"
             />
             <div className="relative">
               <div className="text-5xl mb-6">🚀</div>
               <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight mb-4">
-                Ready to Start Earning?
+                Start Earning Today
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto mb-8 text-lg">
-                Join 2,000+ Teenlancers already building their future with
+                Join 45L+ users already finding freelance jobs for students on
                 Funngro. Free to join. Real projects. Real pay.
               </p>
-              <Button
-                onClick={() => setModalOpen(true)}
-                size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-10 py-3 h-12 transition-all duration-200 hover:shadow-neon"
-              >
-                Join as Teen
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button
+                  onClick={() => setModalOpen(true)}
+                  size="lg"
+                  className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-10 h-12 transition-all duration-200 shadow-orange-sm hover:shadow-orange"
+                >
+                  Join as Teen
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto border-border text-foreground hover:border-primary hover:text-primary bg-white font-semibold text-base px-10 h-12 transition-all duration-200"
+                >
+                  <Download className="mr-2 w-4 h-4" />
+                  Download App
+                </Button>
+              </div>
             </div>
           </div>
         </div>

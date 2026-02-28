@@ -22,12 +22,12 @@ function RootLayout() {
       </main>
       <Footer />
       <Toaster
-        theme="dark"
+        theme="light"
         toastOptions={{
           style: {
-            background: "oklch(0.175 0 0)",
-            border: "1px solid oklch(0.28 0 0)",
-            color: "oklch(0.96 0 0)",
+            background: "oklch(0.99 0 0)",
+            border: "1px solid oklch(0.88 0 0)",
+            color: "oklch(0.13 0 0)",
           },
         }}
       />

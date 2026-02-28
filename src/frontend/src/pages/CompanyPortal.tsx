@@ -3,7 +3,6 @@ import SignupModal from "@/components/SignupModal";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
-  ChevronDown,
   Clipboard,
   Clock,
   DollarSign,
@@ -14,6 +13,8 @@ import {
   Star,
   TrendingUp,
   UserCheck,
+  Users,
+  Zap,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -46,9 +47,9 @@ const processSteps = [
     number: "01",
     icon: Clipboard,
     title: "Post",
-    subtitle: "Describe Your Project",
+    subtitle: "Post in 2 Minutes",
     description:
-      "Tell us what you need — skills required, timeline, and budget. Takes just 5 minutes. No complicated forms, no gatekeeping.",
+      "Describe your project in under 2 minutes — skills needed, timeline, budget. No complicated forms, no gatekeeping. Our streamlined process gets your project live instantly.",
   },
   {
     number: "02",
@@ -56,7 +57,7 @@ const processSteps = [
     title: "Match",
     subtitle: "We Find Your Talent",
     description:
-      "Our team hand-picks the best Teenlancers for your project within 48 hours. Every candidate is pre-vetted and assessed.",
+      "Our team hand-picks the best student freelancers for your project within 48 hours. Every candidate is pre-vetted and assessed from our 45L+ user pool.",
   },
   {
     number: "03",
@@ -64,34 +65,34 @@ const processSteps = [
     title: "Scale",
     subtitle: "Build Your Pipeline",
     description:
-      "Review work, request revisions, and build a reliable talent pipeline. Grow fast with fresh, motivated contributors.",
+      "Review work, request revisions, and build a reliable talent pipeline. Grow fast with fresh, motivated contributors from India's largest student talent network.",
   },
 ];
 
 const features = [
   {
     icon: DollarSign,
-    title: "Cost-Effective",
+    title: "Cost-Effective Solutions",
     description:
-      "Get up to 60% savings compared to traditional agencies — without compromising on quality or creativity.",
+      "Get up to 60% savings compared to traditional agencies. Hire smart talent from our 45L+ user pool without compromising quality.",
   },
   {
     icon: Clock,
     title: "Fast Turnaround",
     description:
-      "Most projects are matched within 48 hours and delivered in days, not weeks. Speed is a competitive advantage.",
+      "Post a project in 2 minutes. Most projects are matched within 48 hours and delivered in days, not weeks.",
   },
   {
     icon: Lightbulb,
-    title: "Fresh Perspective",
+    title: "Fresh, Innovative Thinking",
     description:
-      "Gen-Z Teenlancers bring native digital thinking, trend awareness, and creative energy that seasoned pros often lack.",
+      "Student freelancers bring native digital thinking, trend awareness, and creative energy that seasoned pros often lack.",
   },
   {
     icon: ShieldCheck,
-    title: "Pre-Vetted Talent",
+    title: "Pre-Vetted Talent Pool",
     description:
-      "Every Teenlancer is screened for skills and professionalism. You only see the best — no time wasted on bad fits.",
+      "Every student freelancer is screened for skills and professionalism from our 45L+ network. You only see the best — no time wasted on bad fits.",
   },
 ];
 
@@ -114,7 +115,7 @@ const testimonials = [
   },
   {
     quote:
-      "Our social media content has never been more on-point. These Teenlancers literally live on the platforms we're trying to grow. It's an unfair advantage.",
+      "Our social media content has never been more on-point. These student freelancers literally live on the platforms we're trying to grow. It's an unfair advantage.",
     name: "Priya Nair",
     role: "Marketing Director",
     company: "Orbit Commerce",
@@ -131,6 +132,11 @@ export default function CompanyPortal() {
   const testimonialsSection = useFadeIn();
   const ctaSection = useFadeIn();
 
+  useEffect(() => {
+    document.title =
+      "Hire Smart Talent | Student Freelancers for Your Business | Funngro";
+  }, []);
+
   const scrollToProcess = () => {
     document.getElementById("process")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -138,67 +144,56 @@ export default function CompanyPortal() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage:
-              "url('/assets/generated/hero-bg.dim_1600x900.jpg')",
-          }}
-          aria-hidden="true"
-        />
-        {/* Overlay — slightly different tint for company page */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(135deg, oklch(0.147 0 0 / 0.95) 0%, oklch(0.15 0.01 135 / 0.8) 50%, oklch(0.147 0 0 / 0.93) 100%)",
-          }}
-          aria-hidden="true"
-        />
-        {/* Neon gradient accent */}
-        <div
-          className="absolute top-1/3 right-0 w-[500px] h-[500px] opacity-10 blur-[100px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse, oklch(0.87 0.28 135) 0%, transparent 70%)",
-          }}
-          aria-hidden="true"
-        />
-
-        <div className="container relative mx-auto px-4 sm:px-6 py-20">
+      <section className="relative pt-16 overflow-hidden hero-gradient">
+        <div className="container relative mx-auto px-4 sm:px-6 py-20 md:py-28">
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 mb-8 animate-float">
-              <Star className="w-3.5 h-3.5 text-primary" fill="currentColor" />
-              <span className="text-sm font-medium text-primary">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/8 border border-primary/20 mb-6 animate-float">
+              <Users className="w-3.5 h-3.5 text-primary" />
+              <span className="text-sm font-semibold text-primary">
                 500+ Companies Trust Funngro
               </span>
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse-neon" />
             </div>
 
-            {/* Headline */}
-            <h1 className="font-display font-bold text-5xl sm:text-6xl md:text-7xl text-foreground tracking-tight leading-none mb-6">
-              Scale Your Business with{" "}
-              <span className="text-primary [text-shadow:0_0_40px_oklch(0.87_0.28_135_/_0.5)]">
-                Gen-Z Talent.
+            {/* H1 — one per page */}
+            <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-foreground tracking-tight leading-[1.05] mb-6">
+              Smart Talent Solutions —{" "}
+              <span className="text-primary">
+                Hire Smart Talent for Your Business
               </span>
             </h1>
 
             {/* Sub-headline */}
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              Access a curated pool of motivated Teenlancers ready to tackle
-              your projects — fast, affordable, and innovative. Move faster than
-              your competition.
+              Post a project in 2 minutes and tap into 45L+ motivated student
+              freelancers. Get cost-effective, innovative work done by India's
+              best young talent.
             </p>
+
+            {/* Stats strip */}
+            <div className="flex flex-wrap items-center justify-center gap-6 mb-10">
+              {[
+                { value: "45L+", label: "Users" },
+                { value: "2 Min", label: "to Post" },
+                { value: "60%", label: "Cost Savings" },
+              ].map((stat) => (
+                <div key={stat.label} className="flex items-center gap-2">
+                  <span className="font-display font-bold text-2xl text-primary">
+                    {stat.value}
+                  </span>
+                  <span className="text-sm text-muted-foreground">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 onClick={() => setModalOpen(true)}
                 size="lg"
-                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-8 py-3 h-12 transition-all duration-200 hover:shadow-neon"
+                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-8 h-12 transition-all duration-200 shadow-orange-sm hover:shadow-orange"
               >
                 Post a Project
                 <ArrowRight className="ml-2 w-4 h-4" />
@@ -207,25 +202,27 @@ export default function CompanyPortal() {
                 onClick={scrollToProcess}
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto border-border text-foreground hover:border-primary hover:text-primary bg-transparent font-semibold text-base px-8 py-3 h-12 transition-all duration-200"
+                className="w-full sm:w-auto border-border text-foreground hover:border-primary hover:text-primary bg-white font-semibold text-base px-8 h-12 transition-all duration-200"
               >
-                Learn More
-                <ChevronDown className="ml-2 w-4 h-4" />
+                See How It Works
+                <Zap className="ml-2 w-4 h-4" />
               </Button>
             </div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
-          <ChevronDown className="w-5 h-5 text-muted-foreground animate-bounce" />
-        </div>
+        {/* Decorative bottom edge */}
+        <div
+          className="h-8 bg-white"
+          style={{ clipPath: "ellipse(60% 100% at 50% 100%)" }}
+          aria-hidden="true"
+        />
       </section>
 
       {/* Stats Bar */}
       <section
         ref={statsSection.ref as React.RefObject<HTMLElement>}
-        className={`border-y border-border bg-card transition-all duration-700 ${
+        className={`border-y border-border section-alt transition-all duration-700 ${
           statsSection.isVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-8"
@@ -265,15 +262,14 @@ export default function CompanyPortal() {
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 mb-4">
               <Sparkles className="w-3.5 h-3.5 text-primary" />
-              <span className="text-xs font-medium text-primary uppercase tracking-wider">
+              <span className="text-xs font-semibold text-primary uppercase tracking-wider">
                 Simple Process
               </span>
             </div>
             <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight mb-4">
-              From Idea to Execution <br />
-              <span className="text-primary">in 3 Steps</span>
+              Post a Project in 2 Minutes
             </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
+            <p className="text-muted-foreground max-w-xl mx-auto text-lg">
               No lengthy onboarding, no guesswork. Post, match, and ship —
               that's it.
             </p>
@@ -297,7 +293,7 @@ export default function CompanyPortal() {
                   >
                     {/* Step header */}
                     <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 rounded-full border-2 border-primary bg-primary/10 flex items-center justify-center shadow-neon-sm flex-shrink-0 relative">
+                      <div className="w-16 h-16 rounded-full border-2 border-primary bg-primary/10 flex items-center justify-center flex-shrink-0 relative">
                         <Icon className="w-6 h-6 text-primary" />
                         <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
                           <span className="text-primary-foreground font-bold text-xs">
@@ -316,7 +312,7 @@ export default function CompanyPortal() {
                     </div>
 
                     {/* Description card */}
-                    <div className="glass-card rounded-lg p-5 flex-1">
+                    <div className="light-card rounded-xl p-5 flex-1">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         {step.description}
                       </p>
@@ -332,7 +328,7 @@ export default function CompanyPortal() {
       {/* Why Funngro for Companies */}
       <section
         ref={featuresSection.ref as React.RefObject<HTMLElement>}
-        className={`py-24 bg-card/30 transition-all duration-700 delay-100 ${
+        className={`py-24 section-alt transition-all duration-700 delay-100 ${
           featuresSection.isVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-8"
@@ -341,18 +337,16 @@ export default function CompanyPortal() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 mb-4">
-              <span className="text-xs font-medium text-primary uppercase tracking-wider">
+              <span className="text-xs font-semibold text-primary uppercase tracking-wider">
                 Why Funngro
               </span>
             </div>
             <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight mb-4">
-              The Smarter Way to
-              <br />
-              <span className="text-primary">Get Work Done</span>
+              Why Businesses Choose Funngro
             </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
-              Funngro isn't just cheap labor — it's a strategic advantage for
-              companies that move fast.
+            <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+              Funngro isn't just cost-effective labor — it's a strategic
+              advantage for companies that move fast and hire smart talent.
             </p>
           </div>
 
@@ -362,10 +356,10 @@ export default function CompanyPortal() {
               return (
                 <div
                   key={feature.title}
-                  className="glass-card rounded-lg p-6 group hover:border-primary/50 hover:shadow-neon transition-all duration-300"
+                  className="light-card rounded-xl p-6 group hover:border-primary/40 hover:shadow-card-hover transition-all duration-300"
                   style={{ animationDelay: `${idx * 80}ms` }}
                 >
-                  <div className="w-10 h-10 rounded-md bg-primary/15 flex items-center justify-center mb-4 group-hover:bg-primary/25 transition-colors">
+                  <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <Icon className="w-5 h-5 text-primary" />
                   </div>
                   <h3 className="font-display font-bold text-base text-foreground mb-2">
@@ -394,31 +388,33 @@ export default function CompanyPortal() {
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 mb-4">
               <Star className="w-3.5 h-3.5 text-primary" fill="currentColor" />
-              <span className="text-xs font-medium text-primary uppercase tracking-wider">
-                Social Proof
+              <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+                Client Reviews
               </span>
             </div>
             <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight mb-4">
-              Companies
-              <br />
-              <span className="text-primary">Love Funngro</span>
+              What Our Clients Say
             </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+              Hundreds of businesses have hired smart talent through Funngro and
+              never looked back.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {testimonials.map((testimonial, idx) => (
               <div
                 key={testimonial.name}
-                className="glass-card rounded-lg p-6 flex flex-col gap-4 hover:border-primary/30 hover:shadow-neon-sm transition-all duration-300"
+                className="light-card rounded-xl p-6 flex flex-col gap-4 hover:border-primary/30 hover:shadow-card-hover transition-all duration-300"
                 style={{ animationDelay: `${idx * 80}ms` }}
               >
-                <Quote className="w-6 h-6 text-primary/50 flex-shrink-0" />
+                <Quote className="w-6 h-6 text-primary/40 flex-shrink-0" />
                 <p className="text-sm text-muted-foreground leading-relaxed italic flex-1">
                   "{testimonial.quote}"
                 </p>
                 <div className="flex items-center gap-3 pt-2 border-t border-border">
                   {/* Avatar */}
-                  <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <span className="text-primary font-bold text-sm">
                       {testimonial.initials}
                     </span>
@@ -436,7 +432,7 @@ export default function CompanyPortal() {
                     {["s1", "s2", "s3", "s4", "s5"].map((id) => (
                       <Star
                         key={id}
-                        className="w-3 h-3 text-primary"
+                        className="w-3 h-3 text-yellow-400"
                         fill="currentColor"
                       />
                     ))}
@@ -451,37 +447,33 @@ export default function CompanyPortal() {
       {/* Bottom CTA */}
       <section
         ref={ctaSection.ref as React.RefObject<HTMLElement>}
-        className={`py-24 transition-all duration-700 delay-100 ${
+        className={`py-24 section-alt transition-all duration-700 delay-100 ${
           ctaSection.isVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-8"
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="relative max-w-4xl mx-auto text-center glass-card rounded-2xl p-12 md:p-16 overflow-hidden">
-            {/* Background accent */}
+          <div className="relative max-w-4xl mx-auto text-center rounded-2xl p-12 md:p-16 overflow-hidden bg-white border border-border shadow-card">
+            {/* Orange accent top line */}
             <div
-              className="absolute inset-0 opacity-5 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse at center, oklch(0.87 0.28 135) 0%, transparent 70%)",
-              }}
+              className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl bg-primary"
               aria-hidden="true"
             />
             <div className="relative">
               <div className="text-5xl mb-6">⚡</div>
               <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-foreground tracking-tight mb-4">
-                Ready to Hire Smarter?
+                Hire Smart Talent Today
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto mb-8 text-lg">
-                Join 500+ forward-thinking companies using Funngro to move
-                faster, spend less, and tap into the most innovative generation
-                yet.
+                Join 500+ forward-thinking companies using Funngro's 45L+ user
+                pool to access cost-effective, innovative work. Post a project
+                in 2 minutes.
               </p>
               <Button
                 onClick={() => setModalOpen(true)}
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-10 py-3 h-12 transition-all duration-200 hover:shadow-neon"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base px-10 h-12 transition-all duration-200 shadow-orange-sm hover:shadow-orange"
               >
                 Post a Project
                 <ArrowRight className="ml-2 w-4 h-4" />

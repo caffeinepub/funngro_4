@@ -5,13 +5,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="border-t border-border bg-secondary">
       <div className="container mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-sm bg-primary flex items-center justify-center shadow-neon-sm">
+              <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
                 <Zap
                   className="w-4 h-4 text-primary-foreground"
                   strokeWidth={2.5}
@@ -25,6 +25,13 @@ export default function Footer() {
               Connecting ambitious teens with forward-thinking companies. The
               future of work starts here.
             </p>
+            <p className="text-xs text-muted-foreground">
+              As featured on{" "}
+              <span className="font-semibold text-foreground">
+                Shark Tank India
+              </span>{" "}
+              🦈
+            </p>
           </div>
 
           {/* Platform Links */}
@@ -32,18 +39,18 @@ export default function Footer() {
             <h3 className="font-semibold text-sm text-foreground uppercase tracking-wider">
               Platform
             </h3>
-            <nav className="flex flex-col gap-2.5">
+            <nav className="flex flex-col gap-2.5" aria-label="Platform links">
               <Link
                 to="/"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                For Teens
+                For Teens — Earn &amp; Learn
               </Link>
               <Link
                 to="/companies"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                For Companies
+                For Companies — Hire Smart Talent
               </Link>
               <a
                 href="#how-it-works"
@@ -65,7 +72,7 @@ export default function Footer() {
             <h3 className="font-semibold text-sm text-foreground uppercase tracking-wider">
               Legal
             </h3>
-            <nav className="flex flex-col gap-2.5">
+            <nav className="flex flex-col gap-2.5" aria-label="Legal links">
               <a
                 href="/privacy"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"

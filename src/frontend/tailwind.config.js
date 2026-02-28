@@ -17,15 +17,17 @@ export default {
     extend: {
       fontFamily: {
         sans: [
-          "Mona Sans",
-          "SF Pro Display",
+          "Plus Jakarta Sans",
+          "Outfit",
+          "ui-sans-serif",
           "system-ui",
           "-apple-system",
           "sans-serif",
         ],
         display: [
-          "Mona Sans",
-          "SF Pro Display",
+          "Plus Jakarta Sans",
+          "Outfit",
+          "ui-sans-serif",
           "system-ui",
           "-apple-system",
           "sans-serif",
@@ -82,11 +84,11 @@ export default {
           border: "oklch(var(--sidebar-border))",
           ring: "oklch(var(--sidebar-ring))",
         },
-        // Neon green alias
-        neon: {
-          DEFAULT: "oklch(0.87 0.28 135)",
-          dim: "oklch(0.87 0.28 135 / 0.15)",
-          glow: "oklch(0.87 0.28 135 / 0.4)",
+        // Funngro orange alias
+        orange: {
+          DEFAULT: "oklch(0.65 0.20 45)",
+          light: "oklch(0.97 0.01 60)",
+          glow: "oklch(0.65 0.20 45 / 0.4)",
         },
       },
       borderRadius: {
@@ -96,10 +98,11 @@ export default {
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgba(0,0,0,0.05)",
-        neon: "0 0 20px oklch(0.87 0.28 135 / 0.5), 0 0 40px oklch(0.87 0.28 135 / 0.25)",
-        "neon-sm": "0 0 10px oklch(0.87 0.28 135 / 0.4)",
-        "neon-lg": "0 0 30px oklch(0.87 0.28 135 / 0.6), 0 0 60px oklch(0.87 0.28 135 / 0.3)",
-        "card-dark": "0 4px 24px rgba(0,0,0,0.4)",
+        card: "0 1px 4px oklch(0.13 0 0 / 0.06), 0 4px 16px oklch(0.13 0 0 / 0.04)",
+        "card-hover": "0 4px 12px oklch(0.13 0 0 / 0.1), 0 8px 24px oklch(0.13 0 0 / 0.06)",
+        "orange-sm": "0 0 10px oklch(0.65 0.20 45 / 0.25), 0 0 20px oklch(0.65 0.20 45 / 0.1)",
+        orange: "0 0 20px oklch(0.65 0.20 45 / 0.35), 0 0 40px oklch(0.65 0.20 45 / 0.15)",
+        "navbar": "0 1px 0 0 oklch(0.88 0 0)",
       },
       keyframes: {
         "accordion-down": {
@@ -122,9 +125,9 @@ export default {
           "0%": { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
         },
-        pulse_neon: {
-          "0%, 100%": { boxShadow: "0 0 10px oklch(0.87 0.28 135 / 0.4)" },
-          "50%": { boxShadow: "0 0 25px oklch(0.87 0.28 135 / 0.7), 0 0 50px oklch(0.87 0.28 135 / 0.4)" },
+        pulseOrange: {
+          "0%, 100%": { boxShadow: "0 0 8px oklch(0.65 0.20 45 / 0.3)" },
+          "50%": { boxShadow: "0 0 20px oklch(0.65 0.20 45 / 0.55)" },
         },
       },
       animation: {
@@ -133,7 +136,7 @@ export default {
         "fade-in-up": "fadeInUp 0.6s ease-out both",
         float: "float 3s ease-in-out infinite",
         shimmer: "shimmer 2s linear infinite",
-        "pulse-neon": "pulse_neon 2s ease-in-out infinite",
+        "pulse-orange": "pulseOrange 2s ease-in-out infinite",
       },
     },
   },
